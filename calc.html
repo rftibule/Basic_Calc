@@ -12,7 +12,7 @@
         <input class="calcHistory" type="number" placeholder="0" />
         <input class="calcInput" type="number" placeholder="0" />
       </form>
-      <div class="numPads">
+      <div class="numPads" style="position: relative">
         <button class="numBtn" onclick="appendNumber('C')">C</button>
         <button class="numBtn" onclick="appendNumber('÷')">÷</button>
         <button class="numBtn" onclick="appendNumber('x')">x</button>
@@ -28,9 +28,8 @@
         <button class="numBtn" onclick="appendNumber('7')">7</button>
         <button class="numBtn" onclick="appendNumber('8')">8</button>
         <button class="numBtn" onclick="appendNumber('9')">9</button>
-        <button class="numBtn" onclick="appendNumber('=')">=</button>
-        <button class="numBtn" onclick="appendNumber('#')">#</button>
-        <button class="numBtn" onclick="appendNumber('0')">0</button>
+        <button class="numBtn, numEqual" onclick="appendNumber('=')">=</button>
+        <button class="numBtn, numZero" onclick="appendNumber('0')">0</button>
         <button class="numBtn" onclick="appendNumber('.')">.</button>
       </div>
     </div>
