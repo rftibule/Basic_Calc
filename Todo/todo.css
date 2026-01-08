@@ -72,6 +72,7 @@
   font-size: 17px;
   padding: 12px 8px 12px 50px;
   position: relative;
+  cursor: pointer;
 }
 
 .list li::before {
@@ -93,4 +94,8 @@
 
 .list li.isChecked::before {
   background-image: url("img/checked.png");
+}
+
+.list li:hover{
+color: #c02425;
 }
