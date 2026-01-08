@@ -78,3 +78,8 @@ body {
 #next:enabled:hover {
   background-color: #01319a;
 }
+
+.summary {
+  margin-top: 10px;
+  color: rgb(21, 0, 255);
+}

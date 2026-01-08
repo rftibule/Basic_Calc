@@ -1,6 +1,7 @@
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 const nextButton = document.getElementById("next");
+const summary = document.getElementsByClassName("summary")[0];
 
 const questions = [
   {
@@ -33,8 +34,19 @@ const questions = [
 ];
 
 let currentIndex = 0;
+let score = 0;
 
 function showQuestion() {
+  //Resets
+  if (currentIndex >= questions.length) {
+    currentIndex = 0;
+    score = 0;
+    nextButton.innerHTML = "Next Question";
+  }
+
+  //Regular or Next questions
+  summary.hidden = true;
+  nextButton.disabled = true;
   answers.innerHTML = "";
   const currentQuestion = questions[currentIndex];
   question.innerText = currentIndex + 1 + ". " + currentQuestion.question;
@@ -54,16 +66,29 @@ function setAnswer(pAnswer = "") {
     if (pAnswer === answer.text) {
       //Selected button
       answers.children[index].classList.add("selected");
+      if (answer.correct) {
+        score++;
+      }
     }
     if (answer.correct) {
       answers.children[index].classList.add("correct");
     }
   });
   nextButton.disabled = false;
+  currentIndex++;
+
+  //Last question answer / To Reset
+  if (currentIndex >= questions.length) {
+    nextButton.innerHTML = "Reset";
+    summary.innerHTML = `You got ${score} of ${questions.length} Questions`;
+    summary.hidden = false;
+  }
 }
 
 answers.addEventListener("click", function (e) {
-  setAnswer(e.target.innerHTML);
+  if (e.target.nodeName === "BUTTON") {
+    setAnswer(e.target.innerHTML);
+  }
 });
 
 showQuestion();
