@@ -2,36 +2,39 @@ const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 const nextButton = document.getElementById("next");
 const summary = document.getElementsByClassName("summary")[0];
+let questions = [];
 
-const questions = [
-  {
-    question: "What is the capital of France?",
-    answers: [
-      { text: "Berlin", correct: false },
-      { text: "Madrid", correct: false },
-      { text: "Paris", correct: true },
-      { text: "Rome", correct: false },
-    ],
-  },
-  {
-    question: "Which planet is known as the Red Planet?",
-    answers: [
-      { text: "Earth", correct: false },
-      { text: "Mars", correct: true },
-      { text: "Jupiter", correct: false },
-      { text: "Saturn", correct: false },
-    ],
-  },
-  {
-    question: "What is the largest ocean on Earth?",
-    answers: [
-      { text: "Atlantic Ocean", correct: false },
-      { text: "Indian Ocean", correct: false },
-      { text: "Arctic Ocean", correct: false },
-      { text: "Pacific Ocean", correct: true },
-    ],
-  },
-];
+function ConvertToQuestion(results) {
+  return results.map((q) => {
+    const _answers = [
+      { text: q.correct_answer, correct: true },
+      ...q.incorrect_answers.map((ans) => ({
+        text: ans,
+        correct: false,
+      })),
+    ];
+
+    // Optional: shuffle _answers
+    for (let i = _answers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [_answers[i], _answers[j]] = [_answers[j], _answers[i]];
+    }
+
+    return {
+      question: q.question,
+      answers: _answers,
+    };
+  });
+}
+
+async function LoadQuestions() {
+  const response = await fetch(
+    "https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple"
+  );
+  const data = await response.json();
+
+  questions = ConvertToQuestion(data.results);
+}
 
 let currentIndex = 0;
 let score = 0;
@@ -49,10 +52,10 @@ function showQuestion() {
   nextButton.disabled = true;
   answers.innerHTML = "";
   const currentQuestion = questions[currentIndex];
-  question.innerText = currentIndex + 1 + ". " + currentQuestion.question;
+  question.innerHTML = currentIndex + 1 + ". " + currentQuestion.question;
   currentQuestion.answers.forEach((answer, index) => {
     const btn = document.createElement("button");
-    btn.innerText = answer.text;
+    btn.innerHTML = answer.text;
     answers.appendChild(btn);
   });
 }
@@ -91,5 +94,11 @@ answers.addEventListener("click", function (e) {
   }
 });
 
-showQuestion();
-// setAnswer("Berlin");
+async function initQuiz() {
+  console.log("loading");
+  await LoadQuestions();
+  console.log("showing");
+  showQuestion();
+}
+
+initQuiz();
