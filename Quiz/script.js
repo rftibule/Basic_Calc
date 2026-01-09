@@ -29,7 +29,7 @@ function ConvertToQuestion(results) {
 
 async function LoadQuestions() {
   const response = await fetch(
-    "https://opentdb.com/api.php?amount=15&difficulty=easy&type=multiple"
+    "https://opentdb.com/api.php?amount=10&category=15&difficulty=easy&type=multiple"
   );
   const data = await response.json();
 
@@ -42,7 +42,7 @@ let score = 0;
 function showQuestion() {
   //Resets
   if (currentIndex >= questions.length) {
-    currentIndex = 0;
+    const newLocal = (currentIndex = 0);
     score = 0;
     nextButton.innerHTML = "Next Question";
   }
@@ -97,6 +97,7 @@ answers.addEventListener("click", function (e) {
 async function initQuiz() {
   console.log("loading");
   await LoadQuestions();
+
   console.log("showing");
   showQuestion();
 }
