@@ -1,0 +1,36 @@
+html {
+  font-size: 120%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.form-label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+  font-size: 1rem; /* 16px */
+  padding: 0.5rem 0.75rem; /* Scalable padding */
+  border: 1px solid #ccc;
+}
+
+.form-button {
+  font-size: 1rem; /* 16px */
+  padding: 0.75rem 1.5rem;
+}
+
+/* Larger headings within the form */
+.form-title {
+  font-size: 1.5rem; /* 24px */
+}

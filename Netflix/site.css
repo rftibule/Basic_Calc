@@ -1,0 +1,231 @@
+:root {
+  --netflix-red: #e50914;
+  --netflix-red-dark: #b20710;
+  --dark-bg: #0d0d0d;
+  --card-bg: #1a1a1a;
+  --text-primary: #f0f0f0;
+  --text-secondary: #b3b3b3;
+  --glass-bg: rgba(20, 20, 20, 0.85);
+  --transition: all 0.3s ease;
+  --gold: #e6c200;
+  --button-gradient: linear-gradient(90deg, #e50914, #e62128, #e59014);
+  --glass-overlay: rgba(20, 20, 20, 0.6);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-primary);
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Monsterrat", sans-serif;
+  font-weight: 700;
+}
+.dashboard-flex {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header ------------------ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  background-color: var(--glass-bg);
+  position: sticky;
+  padding: 0 5%;
+  top: 0;
+  z-index: 100;
+  transition: var(--transition);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Header : Logo or Icon */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: var(--netflix-red);
+  font-family: "Monsterrat", sans-serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  position: relative;
+  box-shadow: 0 0 2;
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+}
+
+.icon::after {
+  content: "PREMIUM";
+  font-weight: 700;
+  letter-spacing: 1;
+  position: absolute;
+  color: var(--gold);
+  font-size: 0.7rem;
+  bottom: -6px;
+  right: 0;
+}
+
+.icon i {
+  margin-right: 4px;
+}
+
+/* Header : Mobile Btn */
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mobile-menu-button:hover {
+  color: var(--netflix-red);
+}
+
+/* Headr : Nave Menu */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+}
+
+.nav-menu a {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 5px 0;
+  position: relative;
+}
+
+.nav-menu a:hover,
+.nav-menu a.active {
+  color: var(--text-primary);
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--netflix-red);
+  transition: var(--transition);
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+  width: 100%;
+}
+
+/* Header - User Menu */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.header-user a {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.user-search:hover,
+.user-notif:hover {
+  color: var(--netflix-red);
+  transform: scale(1.1);
+}
+
+.user-notif::after {
+  content: "3";
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background-color: var(--netflix-red);
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  width: 18px;
+  size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-profile * {
+  transition: var(--transition);
+}
+
+.user-profile:hover img {
+  border-color: var(--netflix-red);
+}
+.user-profile:hover {
+  transform: scale(1.05);
+  color: var(--netflix-red);
+}
+
+.user-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Main Container ----------------- */
+.main-container {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  background: rgba(18, 18, 18, 0.9);
+  padding: 30px 0;
+  overflow-y: auto;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  z-index: 90;
+  transition: var(--transition);
+  min-width: 260px;
+}
+
+.sidebar-section {
+  margin-top: 35px;
+  padding: 0 20px;
+}
