@@ -1,0 +1,70 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbar */
+.navbar {
+  height: 80px;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Layout */
+.layout {
+  display: flex;
+  position: relative;
+}
+
+/* Sidebar */
+.sidebar {
+  position: relative;
+  width: 240px;
+  background: #f4f4f4;
+  padding-left: 16px; /* space for red bar */
+  /* Sidebar scrolling */
+  overflow-y: auto;
+
+  position: sticky;
+  top: 80px;
+  height: calc(100vh - 80px); /* locks sidebar height */
+}
+
+/* Red bar */
+.sidebar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: red;
+}
+
+/* Sidebar content */
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 16px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Main */
+.main {
+  flex: 1;
+  background: pink;
+  padding: 20px;
+  overflow-y: auto; /* page scroll stays here */
+  top: 80px;
+  height: calc(100vh - 80px);
+}
