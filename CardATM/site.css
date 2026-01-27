@@ -122,3 +122,27 @@ li {
     transform: scale(1.01);
   }
 }
+
+
+.transactions{
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+.transactions li span h4{
+  padding: 5px 0;
+}
+
+.transactions li span h5{
+  font-weight: normal;
+  color: rgb(140, 140, 140);
+}
